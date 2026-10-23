@@ -81,7 +81,7 @@ def main():
     flutter = shutil.which('flutter')
     if not flutter or not shutil.which('pod'):
         raise SystemExit('请安装 Flutter 和 CocoaPods。')
-    run([flutter, 'pub', 'get', '--enforce-lockfile'])
+    run([flutter, 'pub', 'get'])  # align with android: lockfile is stale, no --enforce-lockfile
     run(['pod', 'install'], cwd=root / 'ios')
     output = root / 'dist' / 'ios'
     output.mkdir(parents=True, exist_ok=True)
